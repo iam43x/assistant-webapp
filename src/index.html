@@ -2,55 +2,17 @@
 <html lang="ru">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assistant</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assistant</title>
 </head>
 
 <body class="font-monospace">
-    <div class="container mw-100 p-2 m-0 bg-light text-dark text-center border shadow">
-        <div class="row align-items-center">
-            <div class="fs-1 col">Interview</div>
-            <div class="col-1">
-                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#login-modal">Login</button>
-            </div>
-        </div>
+  <div class="container mw-100 p-2 m-0 bg-light text-dark text-center border shadow">
+    <div id="header" class="row align-items-center">
+      <div class="fs-1 col">interview</div>
     </div>
-    <div class="container m-0 mw-100 p-2 px-4">
-        <div class="row flex-grow-1 overflow-hidden">
-            <div id="video-share-tab" class="col-3 pt-4">
-                <video id="video-stream" class="w-100 h-auto border rounded shadow" autoplay playsinline></video>
-                <div class="text-center">
-                    <button id="share-stream-btn" type="button" class="btn btn-dark">Share</button>
-                    <button id="record-stream-btn" type="button" class="btn btn-dark">Rec</button>
-                </div>
-            </div>
-            <div id="messages"
-                class="col-6 border-start border-end border-light border-2 mw-100 overflow-auto position-sticky top-0 vh-100 pt-4">
-            </div>
-        </div>
-    </div>
-
-    <div class="modal modal-sm fade bg-dark" id="login-modal" role="dialog" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <form class="form-login text-center">
-                        <img id="login-img">
-                        <div class="input-group">
-                            <span class="input-group-text w-35" id="login-username-span">Username</span>
-                            <input type="username" id="login-username-input" class="form-control">
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text w-35" id="login-password-span">Password</span>
-                            <input type="password" id="login-password-input" class="form-control">
-                        </div>
-                        <button id="login-btn" class="btn btn-dark btn-lg btn-block" data-bs-dismiss="modal" type="button">Go!</button>
-                    </form>
-                </div>
-            </div>
-        </div>    
-    </div>
+  </div>
 </body>
 
 </html>

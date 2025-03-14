@@ -5,34 +5,33 @@ let _modal
 let _usernameInput
 let _passwordInput
 
-export function initLoginModal() {
-    _submit = document.getElementById('login-btn')
-    _modal = document.getElementById('login-modal')
-    _usernameInput = document.getElementById('login-username-input')
-    _passwordInput = document.getElementById('login-password-input')
-    _submit.addEventListener('click', loginSubmit)
-    document.getElementById('login-img').src = loginLogo
+export function configureLoginModal() {
+  _submit = $('#login-btn');
+  _modal = $('#login-modal');
+  _usernameInput = $('#login-username-input');
+  _passwordInput = $('#login-password-input');
+  $('#login-img').attr('src', loginLogo);
+  _submit.on('click', loginSubmit);
 }
 
 function loginSubmit() {
-    fetch('/login', {
-        method: 'POST',
-        body: JSON.stringify({
-            username: _usernameInput.value.toLowerCase(),
-            password: _passwordInput.value
-        })
+  fetch('/login', {
+    method: 'POST',
+    body: JSON.stringify({
+      login: _usernameInput.val().toLowerCase(),
+      password: _passwordInput.val()
     })
-        .then((resp) => resp.json())
-        .then((data) => {
-            localStorage.setItem('token', data.token)
-        })
-        .catch((error) => {
-            console.error('Ошибка при авторизации:', error);
-        })
-        .finally(() => {
-            _usernameInput.value = ''
-            _passwordInput.value = ''
-        });
+  })
+    .then((resp) => resp.json())
+    .then((data) => {
+      localStorage.setItem('token', data.token);
+      window.location.reload();
+    })
+    .catch((error) => {
+      console.error('Ошибка при авторизации:', error);
+    })
+    .finally(() => {
+      _usernameInput.val('');
+      _passwordInput.val('');
+    });
 }
-
-export function showModal() { $('#login-modal').modal('show') }
