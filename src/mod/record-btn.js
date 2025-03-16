@@ -9,7 +9,8 @@ export function initRecordBtn() {
   _element.on('click', onClickHandler);
   // init keydown handler
   document.addEventListener('keydown', function(event) {
-    if (event.code == 'Space') {
+    if (event.code == 'Space' && document.activeElement.tagName !== 'INPUT') {
+      event.preventDefault()
       onClickHandler()
     }
   });
@@ -33,6 +34,6 @@ function start() {
 }
 
 function stop() {
-  _element.text('rec');
+  _element.text('record');
   _element.attr('class', 'btn btn-dark');
 }

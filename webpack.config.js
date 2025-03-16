@@ -65,7 +65,8 @@ module.exports = {
     port: 9000,
     proxy: [
       {
-        context: ['/login', '/v1'],
+        context: ['/api'],
+        pathRewrite: { '^/api': '' },
         target: 'http://localhost:8080',
         secure: false,
       },

@@ -15,21 +15,21 @@ export function configureLoginModal() {
 }
 
 function loginSubmit() {
-  fetch('/login', {
+  fetch('/api/login', {
     method: 'POST',
     body: JSON.stringify({
       login: _usernameInput.val().toLowerCase(),
       password: _passwordInput.val()
     })
   })
-    .then((resp) => resp.json())
-    .then((data) => {
-      localStorage.setItem('token', data.token);
-      window.location.reload();
+    .then(resp => resp.json())
+    .then(data => {
+      if (data.token) {
+        localStorage.setItem('token', data.token);
+        window.location.reload();
+      }
     })
-    .catch((error) => {
-      console.error('Ошибка при авторизации:', error);
-    })
+    .catch(error => console.error('Ошибка при авторизации:', error))
     .finally(() => {
       _usernameInput.val('');
       _passwordInput.val('');

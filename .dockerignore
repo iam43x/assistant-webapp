@@ -1,0 +1,12 @@
+.git/
+.github/
+.vscode/
+nginx/
+certs/
+node_modules/
+package-lock.json
+dist/
+docker-compose.yaml
+Dockerfile
+.gitignore
+README.md

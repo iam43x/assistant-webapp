@@ -14,7 +14,7 @@ export function initShareStreamBtn() {
 function onClickHandler() {
   if (_sharing) {
     setTabAudioMediaRecorder(null);
-    _videoStreamElement.srcObject = null;
+    _videoStreamElement.prop('srcObject', null);
     shareTab();
   } else {
     navigator.mediaDevices.getDisplayMedia({
@@ -22,7 +22,7 @@ function onClickHandler() {
       audio: true,
     })
       .then(stream => {
-        _videoStreamElement.srcObject = new MediaStream(stream.getVideoTracks());
+        _videoStreamElement.prop('srcObject', new MediaStream(stream.getVideoTracks()));
         const audioStream = new MediaStream(stream.getAudioTracks());
         const mediaRecorder = new MediaRecorder(audioStream, { mimeType: "audio/webm" });
         mediaRecorderConfigure(mediaRecorder)

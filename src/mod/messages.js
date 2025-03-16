@@ -1,36 +1,45 @@
-import { addAudioElement } from "./audio.js";
 import { marked } from "marked";
+import { addAudioElement } from "./audio.js";
 
 let _rootElement;
 
 const _inMsg = 'p-2 px-3';
-const _outMsg = 'm-2 p-2 px-3 bg-light rounded border shadow';
+const _outMsg = 'p-2 px-3 bg-light rounded border shadow';
 const _msgText = 'lh-1 fs-6 text-muted text-wrap text-break';
 
 export function initMessages() {
   _rootElement = $('#messages');
 }
 
-export function addIncomingMessage(text) { createBlock(_inMsg, text); }
-
-export function addOutgoingMessage(blob, text) {
-  const msgDiv = createBlock(_outMsg, text);
-  addAudioElement(msgDiv, blob);
-}
-
-function createBlock(classList, textResponse) {
-  const msgDiv = $('<div>', { class: classList });
+export function addIncomingMessage(textResponse) {
+  const msgDiv = $('<div>', { class: _inMsg });
   _rootElement.append(msgDiv);
   textResponse.then((txt) => {
     const txtDiv = $('<div>', { class: _msgText });
+    if (txt) {
+      txtDiv.html(
+        marked.parse(txt)
+      );
+    }
     msgDiv.append(txtDiv);
-    marked.parse(txt)
-      .then(md => txtDiv.append(md));
   });
   autoScroll();
-  return msgDiv;
+}
+
+export function addOutgoingMessage(blob, textResponse) {
+  const msgDiv = $('<div>', { class: _outMsg });
+  _rootElement.append(msgDiv);
+  textResponse.then((txt) => {
+    const txtDiv = $('<div>', {
+      class: _msgText,
+      text: txt,
+    });
+    msgDiv.append(txtDiv);
+  });
+  autoScroll();
+  addAudioElement(msgDiv, blob);
 }
 
 function autoScroll() {
-  _rootElement.scrollTop = _rootElement.scrollHeight;
+  _rootElement.animate({ scrollTop: _rootElement.scrollHeight }, 500);
 }
