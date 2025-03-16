@@ -37,12 +37,12 @@ function onClickHandler() {
 
 function shareTab() {
   _sharing = false;
-  _element.text('share_tab');
+  _element.text('захват_окна');
   _element.attr('class', 'btn btn-dark');
 }
 
 function stopSharing() {
   _sharing = true;
-  _element.text('stop');
+  _element.text('остановить_захват');
   _element.attr('class', 'btn btn-danger');
 }

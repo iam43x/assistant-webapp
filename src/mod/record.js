@@ -38,9 +38,10 @@ function onStopHandler() {
   _recordedChunks = []; // Сбразываем массив записанных данных
   console.log('stop recording!');
   const textPromise = transcribe(blob)
-  addOutgoingMessage(blob, textPromise);
+  const msg = $('<div>')
+  addOutgoingMessage(msg, textPromise);
   textPromise.then((txt) => {
-    addIncomingMessage(askGpt(txt));
+    addIncomingMessage(msg, askGpt(txt));
   });
 }
 

@@ -29,11 +29,11 @@ function onClickHandler() {
 }
 
 function start() {
-  _element.text('stop');
+  _element.text('стоп');
   _element.attr('class', 'btn btn-danger');
 }
 
 function stop() {
-  _element.text('record');
+  _element.text('запись');
   _element.attr('class', 'btn btn-dark');
 }

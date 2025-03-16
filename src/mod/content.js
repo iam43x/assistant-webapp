@@ -2,7 +2,6 @@ import { initMedia } from "./record.js";
 import { initRecordBtn } from "./record-btn.js";
 import { initShareStreamBtn } from "./share-btn.js";
 import { initMessages } from "./messages.js";
-import { renderModalLogin } from "./login.js";
 
 export function renderContentTbl() {
   const token = localStorage.getItem('token')
@@ -13,8 +12,8 @@ export function renderContentTbl() {
               <div id="video-share-tab" class="col-3 pt-4">
                   <video id="video-stream" class="w-100 h-auto border rounded shadow" autoplay playsinline></video>
                   <div class="text-center">
-                      <button id="share-stream-btn" type="button" class="btn btn-dark">share_tab</button>
-                      <button id="record-stream-btn" type="button" class="btn btn-dark">record</button>
+                      <button id="share-stream-btn" type="button" class="btn btn-dark">захват_окна</button>
+                      <button id="record-stream-btn" type="button" class="btn btn-dark">запись</button>
                   </div>
               </div>
               <div id="messages" class="col-6 border-start border-end border-light border-2 mw-100 overflow-auto position-sticky top-0 vh-100 pt-4"></div>
