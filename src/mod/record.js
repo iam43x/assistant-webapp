@@ -13,6 +13,15 @@ let _recordedChunks;
 
 export function setTabAudioMediaRecorder(value) {
   _mediaRecorderHolder.tabAudioMediaRecorder = value;
+  if (value) {
+    _myMicToggle.prop('disabled', false);
+    _myMicToggle.prop('checked', false);
+    _myMicFlag = false;
+  } else {
+    _myMicToggle.prop('disabled', true);
+    _myMicToggle.prop('checked', true);
+    _myMicFlag = true;
+  }
 }
 
 export function initMedia() {
@@ -51,26 +60,26 @@ function onStopHandler() {
 export function startRecording() {
   _myMicToggle.prop('disabled', true);
   _recordedChunks = []; // Сбраcываем массив записанных данных
-  if (_mediaRecorderHolder.tabAudioMediaRecorder && _myMicFlag) {
-    _mediaRecorderHolder.tabAudioMediaRecorder.start();
-  } else {
+  if (_myMicFlag) {
     _mediaRecorderHolder.myMicMediaRecorder.start();
+  } else {
+    _mediaRecorderHolder.tabAudioMediaRecorder.start();
   }
 }
 
 // Остановка записи
 export function stopRecording() {
-  if (_mediaRecorderHolder.tabAudioMediaRecorder && _myMicFlag) {
-    _mediaRecorderHolder.tabAudioMediaRecorder.stop();
-  } else {
+  if (_myMicFlag) {
     _mediaRecorderHolder.myMicMediaRecorder.stop();
+  } else {
+    _mediaRecorderHolder.tabAudioMediaRecorder.stop();
   }
   _myMicToggle.prop('disabled', false);
 }
 
 export function myMicToggle() {
   _myMicToggle = $('#my-mic-toggle')
-  _myMicToggle.on('change', function() {
+  _myMicToggle.on('change', () => {
     if (_myMicFlag) {
       _myMicFlag = false;
     } else {

@@ -20,7 +20,7 @@ export function renderContentTbl() {
               <div id="messages" class="col-6 border-start border-end border-light border-2 mw-100 overflow-auto position-sticky top-0 vh-100 pt-4"></div>
               <div id="config-tab" class="col-3 pt-4 d-flex justify-content-center">
                 <div class="form-check form-switch">
-                  <input id="my-mic-toggle" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked>
+                  <input id="my-mic-toggle" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked disabled>
                   <label class="form-check-label" for="flexSwitchCheckDefault">Запись с микрофона</label>
                 </div>
               </div>
