@@ -48,6 +48,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      favicon: './src/img/icon.png',
       template: './src/index.html', // Генерация HTML-файла
     }),
     new MiniCssExtractPlugin({
