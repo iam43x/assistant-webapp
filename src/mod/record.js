@@ -2,6 +2,9 @@ import { addIncomingMessage, addOutgoingMessage } from './messages.js';
 import { transcribe } from './transcript.js';
 import { askGpt } from './query.js';
 
+var _myMicFlag = true;
+var _myMicToggle;
+
 const _mediaRecorderHolder = {
   tabAudioMediaRecorder: null,
   myMicMediaRecorder: null,
@@ -36,7 +39,6 @@ function onDataAvailable(event) {
 function onStopHandler() {
   const blob = new Blob(_recordedChunks, { type: "audio/webm" });
   _recordedChunks = []; // Сбразываем массив записанных данных
-  console.log('stop recording!');
   const textPromise = transcribe(blob)
   const msg = $('<div>')
   addOutgoingMessage(msg, textPromise);
@@ -47,9 +49,9 @@ function onStopHandler() {
 
 // старт записи...
 export function startRecording() {
+  _myMicToggle.prop('disabled', true);
   _recordedChunks = []; // Сбраcываем массив записанных данных
-  console.log('start recording!');
-  if (_mediaRecorderHolder.tabAudioMediaRecorder) {
+  if (_mediaRecorderHolder.tabAudioMediaRecorder && _myMicFlag) {
     _mediaRecorderHolder.tabAudioMediaRecorder.start();
   } else {
     _mediaRecorderHolder.myMicMediaRecorder.start();
@@ -58,9 +60,21 @@ export function startRecording() {
 
 // Остановка записи
 export function stopRecording() {
-  if (_mediaRecorderHolder.tabAudioMediaRecorder) {
+  if (_mediaRecorderHolder.tabAudioMediaRecorder && _myMicFlag) {
     _mediaRecorderHolder.tabAudioMediaRecorder.stop();
   } else {
     _mediaRecorderHolder.myMicMediaRecorder.stop();
   }
+  _myMicToggle.prop('disabled', false);
+}
+
+export function myMicToggle() {
+  _myMicToggle = $('#my-mic-toggle')
+  _myMicToggle.on('change', function() {
+    if (_myMicFlag) {
+      _myMicFlag = false;
+    } else {
+      _myMicFlag = true;
+    }
+  });
 }

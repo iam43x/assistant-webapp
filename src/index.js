@@ -1,5 +1,5 @@
 import 'bootstrap'
-import '@popperjs/core'
+import Popper from 'popper.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/style.css'
 

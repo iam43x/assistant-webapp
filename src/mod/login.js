@@ -33,15 +33,14 @@ export function renderLogBtn() {
     const jwt = parseJwt(token)
     $('#header').append(
       `<div class="col-2 d-flex justify-content-end">
-        <span class="p-2">${jwt.u_name}</span>
-        <button id="logout-btn" type="button" class="btn btn-outline-dark mx-2">log_out</button>
+        <button id="logout-btn" type="button" class="btn btn-outline-dark mx-2">выход</button>
       </div>`
     )
     $('#logout-btn').on('click', logoutHandler)
   } else {
     $('#header').append(
       `<div class="col-2 text-end">
-        <button type="button" class="btn btn-dark mx-2" data-bs-toggle="modal" data-bs-target="#login-modal">log_in</button>
+        <button type="button" class="btn btn-dark mx-2" data-bs-toggle="modal" data-bs-target="#login-modal">вход</button>
       </div>`
     )
     renderModalLogin()

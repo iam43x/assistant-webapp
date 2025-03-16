@@ -37,7 +37,7 @@ function onClickHandler() {
 
 function shareTab() {
   _sharing = false;
-  _element.text('захват_окна');
+  _element.text('захват_собеса');
   _element.attr('class', 'btn btn-dark');
 }
 

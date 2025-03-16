@@ -5,3 +5,17 @@
 .mw-75 {
     max-width: 75%;
 }
+
+.tooltip-inner {
+    font-size: 14px;
+    max-width: 500px;
+}
+
+.tooltip {
+    --bs-tooltip-opacity: 0.7;
+}
+
+.form-check-input:checked {
+    background-color: black;
+    border-color: black;
+}
