@@ -10,9 +10,10 @@ export function addAudioElement(msgDiv, blob) {
     url: URL.createObjectURL(blob),
     audioRate: 1.5,
     interact: false,
-    height: 30,
+    height: 50,
     barWidth: 5,
     barRadius: 25,
+    barHeight: 1.5,
     barAlign: 'bottom',
   });
   audioDiv.addEventListener('click', () => wavesurfer.playPause());

@@ -5,7 +5,7 @@ let _rootElement;
 
 const _inMsg = 'p-2 px-3';
 const _outMsg = 'p-2 px-3 bg-light rounded border shadow';
-const _msgText = 'lh-1 fs-6 text-muted text-wrap text-break';
+const _msgText = 'mt-2 lh-1 fs-6 text-muted text-wrap text-break';
 
 export function initMessages() {
   _rootElement = $('#messages');
